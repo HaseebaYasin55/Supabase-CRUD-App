@@ -1,0 +1,35 @@
+# Environment variables — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Supabase CLI local dev artifacts
+.supabase/
+supabase/.temp/
+
+# Node (in case Supabase CLI or tooling installs anything locally)
+node_modules/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Downloaded test files
+/downloaded_*
