@@ -1,13 +1,9 @@
-# 🗂️ DocVault — Supabase Document Management CRUD App
+# 🗂️ DocHub — Supabase Document Management CRUD App
 
 A full-stack document management application built to demonstrate **Supabase
 PostgreSQL**, **Supabase Storage**, and **Supabase Edge Functions** working
 together from a **Python** backend, with a modern **Streamlit** UI and a
 parallel **terminal CLI**.
-
-> 🆕 **First time with Supabase?** Read [`SUPABASE_GUIDE.md`](./SUPABASE_GUIDE.md)
-> first — it explains every concept in this project from zero, with
-> click-by-click dashboard instructions.
 
 ---
 
@@ -32,17 +28,17 @@ parallel **terminal CLI**.
 
 ## Features
 
-- 📤 **Upload** documents with drag-and-drop, metadata, and server-side validation
-- 📋 **List / browse** documents with search and category filtering
-- ✏️ **Edit** metadata (description, category) without touching the file
-- 🔁 **Replace** the underlying file while keeping the same document record
-- 🗑️ **Delete** with a confirmation dialog, cleaning up both Storage and the database
-- ⚡ **Edge Function** (`validate-document`) that validates file type/size server-side
+- **Upload** documents with drag-and-drop, metadata, and server-side validation
+- **List / browse** documents with search and category filtering
+- **Edit** metadata (description, category) without touching the file
+- **Replace** the underlying file while keeping the same document record
+- **Delete** with a confirmation dialog, cleaning up both Storage and the database
+- **Edge Function** (`validate-document`) that validates file type/size server-side
   and returns a normalized category + validation tag
-- 🖥️ **Terminal CLI** (`cli.py`) that performs every CRUD operation with no UI
-- 🎨 Modern, minimal, dark-themed dashboard UI (Streamlit + custom CSS)
-- 🛡️ Proper error handling, loading states, empty states, and confirmation dialogs
-- 🔒 Credentials only in environment variables — nothing hardcoded
+- **Terminal CLI** (`cli.py`) that performs every CRUD operation with no UI
+- Modern, minimal, dark-themed dashboard UI (Streamlit + custom CSS)
+- Proper error handling, loading states, empty states, and confirmation dialogs
+- Credentials only in environment variables — nothing hardcoded
 
 ## Tech Stack
 
@@ -175,12 +171,9 @@ copy .env.example .env    # Windows
 | `EDGE_FUNCTION_NAME`           | Name of the deployed Edge Function (default: `validate-document`)    |
 | `MAX_FILE_SIZE_MB`             | Client-side size limit, should match the Edge Function's limit (20)  |
 
-⚠️ **Never commit `.env`.** It's already in `.gitignore`. Full explanation of
-each key's purpose and security implications is in `SUPABASE_GUIDE.md` Part 4.
+⚠️ **Never commit `.env`.** It's already in `.gitignore`.
 
 ## Supabase Setup
-
-Full click-by-click instructions are in `SUPABASE_GUIDE.md` Parts 3, 5, and 6.
 Quick summary:
 
 1. Create a Supabase project at [supabase.com](https://supabase.com).
@@ -264,21 +257,6 @@ curl -X POST "https://<your-project-ref>.supabase.co/functions/v1/validate-docum
 | Update    | Replace file (new path)           | Update metadata / storage_path    | ✅ Re-validates on replace |
 | Delete    | Remove file object                | Delete row                        | —                      |
 
-See `SUPABASE_GUIDE.md` Part 16 for the full explanation of each operation,
-including how Storage/Database consistency is maintained on partial failure.
-
-## Testing
-
-See [`tests/MANUAL_TESTING.md`](./tests/MANUAL_TESTING.md) for a full manual
-test checklist covering every feature, including invalid file types,
-oversized files, and Edge Function failure scenarios.
-
-## Troubleshooting
-
-See `SUPABASE_GUIDE.md` Part 17 for a complete "Problem → Why → Fix" guide
-covering invalid API keys, missing buckets, Edge Function deployment issues,
-RLS/policy errors, and more.
-
 ## Future Improvements
 
 - User authentication (Supabase Auth) with per-user document ownership
@@ -287,3 +265,12 @@ RLS/policy errors, and more.
 - Pagination for large document lists
 - Versioned file history instead of overwrite-on-replace
 - Automated test suite (pytest) with a Supabase test project
+
+---
+
+## Author
+
+**Haseeba Yasin**
+
+If you found this project helpful, feel free to ⭐ the repository.
+
