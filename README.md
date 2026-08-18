@@ -266,6 +266,10 @@ curl -X POST "https://<your-project-ref>.supabase.co/functions/v1/validate-docum
 - Versioned file history instead of overwrite-on-replace
 - Automated test suite (pytest) with a Supabase test project
 
+## Live Link
+
+View the deployed app here [DocHub](https://docapp-11.streamlit.app/)
+
 ---
 
 ## Author
