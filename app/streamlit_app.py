@@ -62,7 +62,16 @@ CUSTOM_CSS = """
 
     html, body, [class*="css"] { color: var(--dv-text); }
 
-    #MainMenu, header, footer { visibility: hidden; }
+   #MainMenu, footer { visibility: hidden; }
+
+header {
+    visibility: visible !important;
+    background: transparent !important;
+    height: 3rem !important;
+    position: relative !important;
+    z-index: 99999 !important;
+}
+
 
     .block-container,
     [data-testid="stMainBlockContainer"],
@@ -826,6 +835,163 @@ CUSTOM_CSS = """
     div[data-testid="stDownloadButton"] > button:focus-visible * {
         color: var(--dv-text) !important;
     }
+
+    /* =========================================================
+       SIDEBAR TOGGLE — ALWAYS-VISIBLE ORANGE CHEVRONS
+       Keep Streamlit's real clickable buttons; only restyle them.
+       ========================================================= */
+
+    /* ---------------- SIDEBAR OPEN ---------------- */
+    [data-testid="stSidebarCollapseButton"] {
+        position: relative !important;
+        z-index: 999999 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"] button {
+        width: 44px !important;
+        height: 44px !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1000000 !important;
+        padding: 0 !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"] button:hover,
+    [data-testid="stSidebarCollapseButton"] button:focus,
+    [data-testid="stSidebarCollapseButton"] button:focus-visible,
+    [data-testid="stSidebarCollapseButton"] button:active {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"] button svg {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    /* Orange << while sidebar is open */
+    [data-testid="stSidebarCollapseButton"] button::after {
+        content: "«" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #D9653E !important;
+        font-family: Arial, sans-serif !important;
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+    }
+
+    /* ---------------- SIDEBAR CLOSED ---------------- */
+    /*
+       Streamlit normally gives this control a grey hover-style box.
+       Remove that wrapper styling and keep the control visible at the
+       left edge so it remains usable on desktop and mobile.
+    */
+    [data-testid="collapsedControl"] {
+        position: fixed !important;
+        left: 8px !important;
+        top: 72px !important;
+        transform: none !important;
+        width: 44px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 999999 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    [data-testid="collapsedControl"] button {
+        width: 44px !important;
+        height: 44px !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1000000 !important;
+        padding: 0 !important;
+    }
+
+    [data-testid="collapsedControl"] button:hover,
+    [data-testid="collapsedControl"] button:focus,
+    [data-testid="collapsedControl"] button:focus-visible,
+    [data-testid="collapsedControl"] button:active {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    [data-testid="collapsedControl"] button svg {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    /* Orange << while sidebar is closed — click it to reopen */
+    [data-testid="collapsedControl"] button::after {
+        content: "«" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #D9653E !important;
+        font-family: Arial, sans-serif !important;
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+    }
+
+    /* Keep the chevrons orange on hover — no grey box */
+    [data-testid="collapsedControl"] button:hover::after,
+    [data-testid="stSidebarCollapseButton"] button:hover::after {
+        color: #C1512D !important;
+    }
+
+/* ---- Mobile responsiveness (only kicks in under 768px, desktop untouched) ---- */
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem 0.8rem !important;
+        max-width: 100% !important;
+    }
+    [data-testid="stSidebar"] {
+        width: 85vw !important;
+        min-width: 85vw !important;
+    }
+    [data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        margin-bottom: 0.5rem;
+    }
+    div[data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    .stButton button, .stTextInput input, .stSelectbox, .stFileUploader {
+        width: 100% !important;
+        font-size: 0.95rem !important;
+    }
+    h1 { font-size: 1.4rem !important; }
+    h2 { font-size: 1.15rem !important; }
+    h3 { font-size: 1rem !important; }
+}
 
 </style>
 """
